@@ -59,11 +59,20 @@
         .brand-icon {
             font-size: 42px;
             font-weight: 900;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -2px;
+            color: var(--accent);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: logoFloat 4s ease-in-out infinite, logoGlow 4s ease-in-out infinite, logoRotate 6s ease-in-out infinite;
+            filter: drop-shadow(0 0 12px rgba(0, 208, 132, 0.3));
+        }
+
+        .brand-icon svg {
+            width: 100%;
+            height: 100%;
+            color: var(--accent);
         }
 
         .brand-icon small {
@@ -110,6 +119,24 @@
         @keyframes pulse {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.4; }
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0px); }
+            25% { transform: translateY(-12px); }
+            50% { transform: translateY(-8px); }
+            75% { transform: translateY(-12px); }
+        }
+
+        @keyframes logoGlow {
+            0%, 100% { filter: drop-shadow(0 0 8px rgba(0, 208, 132, 0.3)); }
+            50% { filter: drop-shadow(0 0 16px rgba(0, 208, 132, 0.6)); }
+        }
+
+        @keyframes logoRotate {
+            0% { transform: rotate(-4deg); }
+            50% { transform: rotate(4deg); }
+            100% { transform: rotate(-4deg); }
         }
 
         main {
@@ -564,8 +591,26 @@
     <header class="topbar">
         <div class="brand">
             <div class="brand-icon">
-                <span>X</span>
-                <small>AE</small>
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+                    <!-- X -->
+                    <line x1="50" y1="60" x2="90" y2="120" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+                    <line x1="90" y1="60" x2="50" y2="120" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+                    
+                    <!-- A -->
+                    <line x1="110" y1="120" x2="145" y2="60" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+                    <line x1="145" y1="60" x2="180" y2="120" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+                    <line x1="125" y1="90" x2="160" y2="90" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+                    
+                    <!-- E (curved lines) -->
+                    <path d="M 140 130 Q 165 135 175 150" stroke="currentColor" stroke-width="10" fill="none" stroke-linecap="round"/>
+                    <path d="M 170 75 Q 165 60 150 55" stroke="currentColor" stroke-width="10" fill="none" stroke-linecap="round"/>
+                    
+                    <!-- Circle/orbit -->
+                    <circle cx="100" cy="100" r="85" fill="none" stroke="currentColor" stroke-width="8" opacity="0.4"/>
+                    
+                    <!-- 67 -->
+                    <text x="100" y="165" font-size="24" font-weight="bold" text-anchor="middle" fill="currentColor" opacity="0.8">67</text>
+                </svg>
             </div>
             <div class="brand-info">
                 <div class="brand-name">XAE_CODE</div>
