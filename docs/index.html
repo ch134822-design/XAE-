@@ -60,19 +60,46 @@
             font-size: 42px;
             font-weight: 900;
             color: var(--accent);
-            width: 80px;
-            height: 80px;
+            width: 95px;
+            height: 95px;
             display: flex;
             align-items: center;
             justify-content: center;
-            animation: logoFloat 4s ease-in-out infinite, logoGlow 4s ease-in-out infinite, logoRotate 6s ease-in-out infinite;
-            filter: drop-shadow(0 0 12px rgba(0, 208, 132, 0.3));
+            position: relative;
         }
 
         .brand-icon svg {
             width: 100%;
             height: 100%;
             color: var(--accent);
+            filter: drop-shadow(0 0 12px rgba(0, 208, 132, 0.3));
+            animation: logoPulse 2s ease-in-out infinite, logoSpin 20s linear infinite;
+        }
+
+        .brand-icon::before {
+            content: '';
+            position: absolute;
+            width: 110%;
+            height: 110%;
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+            opacity: 0.15;
+            animation: logoSpin 30s linear infinite reverse;
+            top: -5%;
+            left: -5%;
+        }
+
+        .brand-icon::after {
+            content: '';
+            position: absolute;
+            width: 85%;
+            height: 85%;
+            border: 1px solid var(--accent);
+            border-radius: 50%;
+            opacity: 0.2;
+            animation: logoSpin 15s linear infinite;
+            top: 7.5%;
+            left: 7.5%;
         }
 
         .brand-icon small {
@@ -137,6 +164,26 @@
             0% { transform: rotate(-4deg); }
             50% { transform: rotate(4deg); }
             100% { transform: rotate(-4deg); }
+        }
+
+        @keyframes logoSpin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes logoPulse {
+            0%, 100% { 
+                filter: drop-shadow(0 0 8px rgba(0, 208, 132, 0.3));
+            }
+            50% { 
+                filter: drop-shadow(0 0 24px rgba(0, 208, 132, 0.8)) 
+                        drop-shadow(0 0 40px rgba(0, 208, 132, 0.4));
+            }
+        }
+
+        @keyframes logoWave {
+            0% { stroke-dashoffset: 0; }
+            100% { stroke-dashoffset: 1000; }
         }
 
         main {
@@ -592,24 +639,40 @@
         <div class="brand">
             <div class="brand-icon">
                 <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
-                    <!-- X -->
-                    <line x1="50" y1="60" x2="90" y2="120" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
-                    <line x1="90" y1="60" x2="50" y2="120" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+                    <defs>
+                        <filter id="glow">
+                            <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
                     
-                    <!-- A -->
-                    <line x1="110" y1="120" x2="145" y2="60" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
-                    <line x1="145" y1="60" x2="180" y2="120" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
-                    <line x1="125" y1="90" x2="160" y2="90" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+                    <!-- X (left side) -->
+                    <line x1="45" y1="55" x2="95" y2="125" stroke="currentColor" stroke-width="16" stroke-linecap="round" filter="url(#glow)"/>
+                    <line x1="95" y1="55" x2="45" y2="125" stroke="currentColor" stroke-width="16" stroke-linecap="round" filter="url(#glow)"/>
                     
-                    <!-- E (curved lines) -->
-                    <path d="M 140 130 Q 165 135 175 150" stroke="currentColor" stroke-width="10" fill="none" stroke-linecap="round"/>
-                    <path d="M 170 75 Q 165 60 150 55" stroke="currentColor" stroke-width="10" fill="none" stroke-linecap="round"/>
+                    <!-- A (right side) -->
+                    <line x1="110" y1="125" x2="150" y2="55" stroke="currentColor" stroke-width="16" stroke-linecap="round" filter="url(#glow)"/>
+                    <line x1="150" y1="55" x2="190" y2="125" stroke="currentColor" stroke-width="16" stroke-linecap="round" filter="url(#glow)"/>
+                    <line x1="128" y1="90" x2="172" y2="90" stroke="currentColor" stroke-width="16" stroke-linecap="round" filter="url(#glow)"/>
                     
-                    <!-- Circle/orbit -->
-                    <circle cx="100" cy="100" r="85" fill="none" stroke="currentColor" stroke-width="8" opacity="0.4"/>
+                    <!-- E (curved accents) -->
+                    <path d="M 155 75 Q 170 60 180 50" stroke="currentColor" stroke-width="12" fill="none" stroke-linecap="round" opacity="0.7"/>
+                    <path d="M 145 130 Q 170 140 185 155" stroke="currentColor" stroke-width="12" fill="none" stroke-linecap="round" opacity="0.7"/>
                     
-                    <!-- 67 -->
-                    <text x="100" y="165" font-size="24" font-weight="bold" text-anchor="middle" fill="currentColor" opacity="0.8">67</text>
+                    <!-- Central circle - orbit ring -->
+                    <circle cx="100" cy="100" r="90" fill="none" stroke="currentColor" stroke-width="6" opacity="0.25"/>
+                    
+                    <!-- Small accent dots -->
+                    <circle cx="100" cy="25" r="4" fill="currentColor" opacity="0.5"/>
+                    <circle cx="175" cy="100" r="4" fill="currentColor" opacity="0.5"/>
+                    <circle cx="100" cy="175" r="4" fill="currentColor" opacity="0.5"/>
+                    <circle cx="25" cy="100" r="4" fill="currentColor" opacity="0.5"/>
+                    
+                    <!-- 67 text -->
+                    <text x="100" y="168" font-size="28" font-weight="bold" text-anchor="middle" fill="currentColor" opacity="0.85">67</text>
                 </svg>
             </div>
             <div class="brand-info">
