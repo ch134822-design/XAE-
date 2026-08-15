@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>XAE CODE — Vectorial Language Protocol</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- HEADER -->
+    <header class="topbar">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                <span>X</span>
+                <small>AE</small>
+            </div>
+
+            <div class="brand-info">
+
+                <div class="brand-name">
+                    XAE_CODE
+                </div>
+
+                <div class="brand-version">
+                    v1.0.0 • Vectorial Language Protocol
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="system-status">
+
+            <span class="status-light"></span>
+
+            MATRIZ VETORIAL ATIVA
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <!-- EXPLANATION -->
+        <section class="explanation">
+
+            <div class="info-icon">
+                ?
+            </div>
+
+            <div class="explanation-content">
+
+                <h2>
+                    Como funciona o algoritmo matemático do XAE?
+                </h2>
+
+                <p>
+                    Cada caractere do texto é convertido em um valor
+                    alfabético. Esse valor é transformado em um vetor
+                    de três posições dentro de uma matriz de base 4.
+                    Cada posição pode assumir uma das quatro raízes
+                    fundamentais do XAE:
+                    <strong>XAE</strong>,
+                    <strong>XALON</strong>,
+                    <strong>XABI</strong> e
+                    <strong>ALONSO</strong>.
+                </p>
+
+                <div class="formula">
+
+                    TEXTO
+
+                    <span>→</span>
+
+                    VALOR
+
+                    <span>→</span>
+
+                    VETOR
+
+                    <span>→</span>
+
+                    MATRIZ XAE
+
+                    <span>→</span>
+
+                    LÍNGUA XAE
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- MAIN GRID -->
+        <section class="codec-grid">
+
+
+            <!-- ENCODE -->
+            <article class="codec-card encode-card">
+
+                <div class="card-header">
+
+                    <div class="card-title">
+
+                        <div class="lock encode-lock">
+                            ↑
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Codificar para XAE
+                            </h3>
+
+                            <span>
+                                LADO ESQUERDO
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <label>
+                    TEXTO COMUM / MENSAGEM
+                </label>
+
+
+                <textarea
+                    id="encodeInput"
+                    placeholder="Digite uma mensagem..."
+                    spellcheck="false"
+                ></textarea>
+
+
+                <button
+                    class="main-button encode-button"
+                    onclick="encodeXAE()"
+                >
+
+                    CODIFICAR PARA XAE
+
+                    <span>→</span>
+
+                </button>
+
+
+                <div class="result-box">
+
+                    <div class="result-header">
+
+                        <span>
+                            RESULTADO XAE
+                        </span>
+
+                        <button
+                            onclick="copyEncode()"
+                            class="copy"
+                        >
+                            COPIAR
+                        </button>
+
+                    </div>
+
+                    <div
+                        id="encodeResult"
+                        class="result-content"
+                    >
+                        O código aparecerá aqui...
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- DECODE -->
+            <article class="codec-card decode-card">
+
+                <div class="card-header">
+
+                    <div class="card-title">
+
+                        <div class="lock decode-lock">
+                            ↓
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Decodificar do XAE
+                            </h3>
+
+                            <span>
+                                LADO DIREITO
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <label>
+                    CÓDIGO XAE
+                </label>
+
+
+                <textarea
+                    id="decodeInput"
+                    placeholder="Cole aqui o código XAE..."
+                    spellcheck="false"
+                ></textarea>
+
+
+                <button
+                    class="main-button decode-button"
+                    onclick="decodeXAE()"
+                >
+
+                    ← DECODIFICAR PARA PORTUGUÊS
+
+                </button>
+
+
+                <div class="result-box">
+
+                    <div class="result-header">
+
+                        <span>
+                            TEXTO DECODIFICADO
+                        </span>
+
+                        <button
+                            onclick="copyDecode()"
+                            class="copy"
+                        >
+                            COPIAR
+                        </button>
+
+                    </div>
+
+                    <div
+                        id="decodeResult"
+                        class="result-content"
+                    >
+                        O texto aparecerá aqui...
+                    </div>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <!-- MATRIX -->
+        <section class="matrix-section">
+
+            <div class="section-top">
+
+                <div>
+
+                    <div class="section-label">
+                        XAE / MATRIX
+                    </div>
+
+                    <h2>
+                        Matriz Vetorial
+                    </h2>
+
+                    <p>
+                        4 raízes × 4 estados × 4 posições
+                    </p>
+
+                </div>
+
+
+                <div class="matrix-size">
+                    4³ = 64
+                </div>
+
+            </div>
+
+
+            <div class="roots">
+
+                <div>
+                    <b>00</b>
+                    <strong>XAE</strong>
+                </div>
+
+                <div>
+                    <b>01</b>
+                    <strong>XALON</strong>
+                </div>
+
+                <div>
+                    <b>02</b>
+                    <strong>XABI</strong>
+                </div>
+
+                <div>
+                    <b>03</b>
+                    <strong>ALONSO</strong>
+                </div>
+
+            </div>
+
+
+            <div
+                id="matrix"
+                class="matrix-grid"
+            ></div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <span>
+            XAE_CODE
+        </span>
+
+        <span>
+            VECTORIAL LANGUAGE PROTOCOL
+        </span>
+
+        <span>
+            4³ MATRIX ENGINE
+        </span>
+
+    </footer>
+
+</div>
+
+
+<script>
+
+const TOKENS = [
+    "XAE",
+    "XALON",
+    "XABI",
+    "ALONSO"
+];
+
+
+// =====================================================
+// MATRIZ
+// =====================================================
+
+const matrix =
+    document.getElementById("matrix");
+
+
+const SYMBOLS = [
+    "A","B","C","D","E","F","G","H","I","J","K","L","M",
+    "N","O","P","Q","R","S","T","U","V","W","X","Y","Z",
+    "ESPAÇO [␣]", "PONTO [.]", "VÍRGULA [,]", "EXCLAMAÇÃO [!]", "INTERROGAÇÃO [?]",
+    "DOIS PONTOS [:]", "PONTO E VÍRGULA [;]", "HÍFEN [-]", "ABRE PARÊNTESE [(]", "FECHA PARÊNTESE [)]",
+    "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"
+];
+
+for (let n = 0; n < SYMBOLS.length; n++) {
+    const a = Math.floor(n / 16);
+    const b = Math.floor((n % 16) / 4);
+    const c = n % 4;
+    const label = SYMBOLS[n];
+
+    const card = document.createElement("div");
+    card.className = "matrix-item";
+    card.innerHTML = `
+        <div class="matrix-letter">${label}</div>
+        <div class="matrix-vector">[${a}, ${b}, ${c}]</div>
+        <div class="matrix-code">
+            ${TOKENS[a]}, ${TOKENS[b]}, ${TOKENS[c]}
+        </div>
+    `;
+    matrix.appendChild(card);
+}
+
+
+// =====================================================
+// CODIFICAR
+// =====================================================
+
+async function encodeXAE() {
+
+    const input =
+        document.getElementById(
+            "encodeInput"
+        ).value;
+
+
+    const result =
+        document.getElementById(
+            "encodeResult"
+        );
+
+
+    if (!input.trim()) {
+
+        result.textContent =
+            "Digite uma mensagem.";
+
+        return;
+    }
+
+
+    result.textContent =
+        "Processando...";
+
+
+    try {
+
+        const response =
+            await fetch(
+                "/api/encode",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body: JSON.stringify({
+                        text: input
+                    })
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (!data.ok) {
+
+            result.textContent =
+                data.error;
+
+            return;
+        }
+
+
+        result.textContent =
+            data.result;
+
+    }
+    catch (error) {
+
+        result.textContent =
+            "Erro ao executar o motor XAE.";
+
+    }
+
+}
+
+
+// =====================================================
+// DECODIFICAR
+// =====================================================
+
+async function decodeXAE() {
+
+    const input =
+        document.getElementById(
+            "decodeInput"
+        ).value;
+
+
+    const result =
+        document.getElementById(
+            "decodeResult"
+        );
+
+
+    if (!input.trim()) {
+
+        result.textContent =
+            "Cole um código XAE.";
+
+        return;
+    }
+
+
+    result.textContent =
+        "Decodificando...";
+
+
+    try {
+
+        const response =
+            await fetch(
+                "/api/decode",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body: JSON.stringify({
+                        text: input
+                    })
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (!data.ok) {
+
+            result.textContent =
+                data.error;
+
+            return;
+        }
+
+
+        result.textContent =
+            data.result;
+
+    }
+    catch (error) {
+
+        result.textContent =
+            "Erro ao executar o motor XAE.";
+
+    }
+
+}
+
+
+// =====================================================
+// COPIAR
+// =====================================================
+
+function copyEncode() {
+
+    const text =
+        document.getElementById(
+            "encodeResult"
+        ).textContent;
+
+    navigator.clipboard.writeText(text);
+
+}
+
+
+function copyDecode() {
+
+    const text =
+        document.getElementById(
+            "decodeResult"
+        ).textContent;
+
+    navigator.clipboard.writeText(text);
+
+}
+
+</script>
+
+</body>
+
+</html>
